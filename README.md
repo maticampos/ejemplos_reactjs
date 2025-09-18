@@ -1,4 +1,4 @@
-***Curso de React con Vite 🚀***
+***Ejemplos de código React + Vite usados en clase 🚀***
 
 Ejemplos de código del curso React + Vite | Talento Tech 2025.
 El objetivo es aprender a construir aplicaciones modernas, rápidas y modulares.
