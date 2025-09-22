@@ -28,8 +28,8 @@ function EcommerceSimple() {
       <div id="tarjeta">
         <h3>Productos</h3>
         <ul>
-          {listaProductos.map((producto) => ( // aplica método .map() sobre la lista "listaProductos" y ewl parámetro "producto" es la variable de iteración que recorre cada objeto de la lista.
-            <li key={producto.id}> {/* use prducto.id como clave de identificación única del objeto*/}
+          {listaProductos.map((producto) => ( // aplica método .map() sobre la lista "listaProductos" y el parámetro "producto" es la variable de iteración que recorre cada objeto de la lista.
+            <li key={producto.id}> {/* usa prducto.id como clave de identificación única del objeto*/}
               {producto.nombre}: ${producto.precio.toFixed(3)} {/* Muestra adentro del <li> el nombre del producto y el precio.con(3)decimales */}
               <button onClick={() => agregarCarrito(producto)}>Agregar</button> {/* El botón "Agregar contiene el llamado a la función "agregarCarrrito" cuando se hace onClick sobre él que modifica la cariable carrito con setCarrito, agregando el producto del botón que se haga click */}
             </li>
@@ -46,5 +46,6 @@ function EcommerceSimple() {
       </div>
     );
   }; export default EcommerceSimple;
+
 
 
