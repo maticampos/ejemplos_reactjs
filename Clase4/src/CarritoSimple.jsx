@@ -32,11 +32,12 @@ function EcommerceSimple() {
         <h2>=============================</h2>
         <h3>Carrito</h3>
         {carrito.map((producto, index) => (
-          <p key={index}>
+          <p key={producto.id}>
             {producto.nombre}: ${producto.precio.toFixed(3)}
           </p>
         ))}
         <button onClick={vaciarCarrito}>Eliminar</button>
       </div>
     );
+
   }; export default EcommerceSimple;
