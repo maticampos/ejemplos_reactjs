@@ -12,9 +12,21 @@ export function AppProvider({ children }) {
   // Estado del carrito
   const [carrito, setCarrito] = useState([]);
 
-  // Funciones para el carrito
-  const agregarAlCarrito = (producto) => {
-    setCarrito([...carrito, producto]);
+const agregarAlCarrito = (producto) => {
+    setCarrito(prevCarrito => {
+      const productoExistente = prevCarrito.find(item => item.id === producto.id);
+     
+      if (productoExistente) {
+        return prevCarrito.map(item =>
+          item.id === producto.id
+            ? { ...item, cantidad: (item.cantidad || 1) + 1 }
+            : item
+        );
+      } else {
+        return [...prevCarrito, { ...producto, cantidad: 1 }];
+      }
+    });
+    alert(`Producto ${producto.nombre} agregado.`);
   };
 
   const vaciarCarrito = () => {
@@ -43,6 +55,7 @@ export function AppProvider({ children }) {
    
     // Carrito
     carrito,
+    setCarrito,
     agregarAlCarrito,
     vaciarCarrito,
     eliminarDelCarrito

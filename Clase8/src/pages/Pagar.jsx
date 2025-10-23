@@ -6,10 +6,13 @@ export default function Pagar() {
   const navigate = useNavigate();
 
   // Calculo del total
-  const total = carrito.reduce(
-    (suma, producto) => suma + Number(producto.precio),
-    0
-  );
+  // Calcula el total x cantidad y muestra precio x unidad
+  const total = carrito.reduce((suma, producto) => {
+    const cantidad = Number(producto.cantidad || 1);
+    const precioUnitario = Number(producto.precio || 0);
+    return suma + cantidad * precioUnitario;
+  }, 0);
+
 
   // Función para finalizar compra
   const comprar = () => {
@@ -34,15 +37,25 @@ export default function Pagar() {
 
         {carrito.length > 0 ? (
           <>
-            {carrito.map((producto) => (
-              <div key={producto.id}>
-                <img src={producto.avatar} alt={producto.nombre} width="60" />
-                <span>{producto.nombre}</span>
-                <strong>${producto.precio}</strong>
-              </div>
-            ))}
-            <h3>Total a pagar: ${total}</h3>
+            {carrito.map((producto) => {
+              const cantidad = Number(producto.cantidad || 1);
+              const precioUnitario = Number(producto.precio || 0);
+              const subtotal = cantidad * precioUnitario;
+              return (
+                <div key={producto.id} style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+                  <img src={producto.avatar} alt={producto.nombre} width="60" />
+                  <div>
+                    <div>{producto.nombre}</div>
+                    <div>Precio unidad: ${Number(precioUnitario).toFixed(3)}</div>
+                    <div>Cantidad: {cantidad}</div>
+                    <div><strong>Subtotal: ${Number(subtotal).toFixed(3)}</strong></div>
+                  </div>
+                </div>
+              );
+            })}
+            <h3>Total a pagar: ${Number(total).toFixed(3)}</h3>
           </>
+
         ) : (
           <p>No hay productos en el carrito</p>
         )}
