@@ -22,10 +22,24 @@ export default function Productos() {
       });
   }, []);
 
-  const agregarAlCarrito = (producto) => {
-    setCarrito([...carrito, producto]); 
+const agregarAlCarrito = (producto) => {
+    setCarrito(prevCarrito => {
+      const productoExistente = prevCarrito.find(item => item.id === producto.id);
+     
+      if (productoExistente) {
+        return prevCarrito.map(item =>
+          item.id === producto.id
+            ? { ...item, cantidad: (item.cantidad || 1) + 1 }
+            : item
+        );
+      } else {
+        return [...prevCarrito, { ...producto, cantidad: 1 }];
+      }
+    });
     alert(`Producto ${producto.nombre} agregado.`);
   };
+
+
 
   if (cargando) return <p>Cargando productos...</p>;
   if (error) return <p>{error}</p>;
