@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import CarritoCompras from "./Carrito";
-import { useAuthContext } from "../context/AuthContext";
+
 import { useCartContext } from "../context/CartContext";
 
 export default function Productos() {

@@ -1,20 +1,12 @@
 import React, { createContext, useContext, useState } from "react";
 
-
 // Crear el contexto
 export const CartContext = createContext();
 
-
 // Proveedor del contexto
 export function CartProvider({ children }) {
-  // Estado de autenticación
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [usuario, setUsuario] = useState({ nombre: "", email: "" });
-
-
   // Estado del carrito
   const [carrito, setCarrito] = useState([]);
-
 
   // Funciones para el carrito
 const agregarAlCarrito = (producto) => {
@@ -34,16 +26,13 @@ const agregarAlCarrito = (producto) => {
     alert(`Producto ${producto.nombre} agregado.`);
   };
 
-
   const vaciarCarrito = () => {
     setCarrito([]);
   };
 
-
   const eliminarDelCarrito = (productoId) => {
     setCarrito(carrito.filter(item => item.id !== productoId));
   };
-
 
    const quitarCantidad = (idProducto) => {
     const carritoActualizado = carrito.map(producto => {
@@ -61,7 +50,6 @@ const agregarAlCarrito = (producto) => {
     setCarrito(carritoActualizado);
   };
 
-
     const agregarCantidad = (idProducto) => {
     const nuevoCarrito = carrito.map(producto => {
       if (producto.id === idProducto) {
@@ -74,7 +62,6 @@ const agregarAlCarrito = (producto) => {
     });
     setCarrito(nuevoCarrito);
   };
-
 
   const total = carrito.reduce((sum, item) => {
     const cantidad = item.cantidad || 1;
@@ -89,16 +76,13 @@ const agregarAlCarrito = (producto) => {
     vaciarCarrito,
     eliminarDelCarrito,
 
-
     // f(x) de Cantidad
     agregarCantidad,
     quitarCantidad,
 
-
     // f(x) total
     total
   };
-
 
   return (
     <CartContext.Provider value={value}>
@@ -106,7 +90,6 @@ const agregarAlCarrito = (producto) => {
     </CartContext.Provider>
   );
 }
-
 
 export function useCartContext() {
   const context = useContext(CartContext);

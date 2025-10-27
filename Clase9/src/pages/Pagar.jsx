@@ -20,7 +20,7 @@ export default function Pagar() {
     <div>
       {/* Info del usuario */}
       <div>
-        <h2>{usuario.nombre}</h2>
+        <h2>Hola {usuario.nombre}</h2>
         <p>Email: {usuario.email}</p>
        
         {/* Estilo para el Token */}

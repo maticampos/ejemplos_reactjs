@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Inicio from "./pages/Inicio";
 import Servicios from "./pages/Servicios";
 import Navbar from "./pages/Navbar";
@@ -26,14 +26,8 @@ function App() {
         <Route path="/productos/:id" element={<ProductoDetalle />} />
         <Route path="/productos/:categoria/:id" element={<ProductoDetalle />} />
         <Route path="/iniciar-sesion" element={<IniciarSesion />} />
-        <Route path="/dashboard" element={
-          <RutaProtegida soloAdmin={true}>
-              <Dashboard />
-            </RutaProtegida>}/>
-        <Route path="/pagar" element={
-            <RutaProtegida>
-              <Pagar />
-            </RutaProtegida>}/>
+        <Route path="/dashboard" element={<RutaProtegida soloAdmin={true}><Dashboard /></RutaProtegida>}/>
+        <Route path="/pagar" element={<RutaProtegida><Pagar /></RutaProtegida>}/>
       </Routes>
       <Footer />
       </ CartProvider>

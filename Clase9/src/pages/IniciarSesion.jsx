@@ -14,7 +14,8 @@ export default function IniciarSesion() {
     
     // Verificar credenciales (admin/1234@admin)
     if (formulario.nombre === "admin" && formulario.email === "1234@admin") {
-      // Pasa nombre para el token admin
+      // Guarda el email ingresado y pasa nombre para el token admin
+      localStorage.setItem("authEmail", formulario.email);
       iniciarSesion("admin");
       navigate("/dashboard");
     }
@@ -24,8 +25,9 @@ export default function IniciarSesion() {
       formulario.email &&
       formulario.nombre !== "admin"
     ) {
-      // Pasa nombre para el token user
-      iniciarSesion(formulario.nombre);
+  // Guarda el email ingresado y pasa nombre para el token user
+  localStorage.setItem("authEmail", formulario.email);
+  iniciarSesion(formulario.nombre);
 
       // Si venía del carrito, redirige a pagar
       if (ubicacion.state?.carrito) {
