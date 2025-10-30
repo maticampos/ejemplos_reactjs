@@ -2,21 +2,18 @@ import React from 'react';
 import { useAuthContext } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
 
-
 export default function Dashboard() {
   const { usuario, cerrarSesion } = useAuthContext();
 
-
   // Obtener el token actual
   const tokenActual = localStorage.getItem('authToken');
-
 
   return (
     <div style={{ padding: '20px', minHeight: '60vh' }}>
       <h1>Dashboard Administrativo</h1>
       <div style={{ background: '#f5f5f5', padding: '20px', borderRadius: '8px' }}>
         <p><strong>Sesión iniciada como: </strong> {usuario.nombre}</p>
-       
+        
         {/* SECCIÓN DEL TOKEN */}
         <div style={{
           background: '#e9ecef',
@@ -30,12 +27,11 @@ export default function Dashboard() {
           <code>{tokenActual}</code>
         </div>
 
-
         {/* SECCIÓN DE ACCIONES ADMIN */}
         <div style={{ margin: '20px 0' }}>
           <h3>Acciones:</h3>
           <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '10px' }}>
-            <Link
+            <Link 
               to="/agregar-producto"
               style={{
                 padding: '10px 20px',
@@ -48,8 +44,8 @@ export default function Dashboard() {
             >
               Agregar Nuevo Producto
             </Link>
-           
-            <Link
+            
+            <Link 
               to="/productos"
               style={{
                 padding: '10px 20px',

@@ -19,7 +19,7 @@ export default function IniciarSesion() {
       iniciarSesion("admin");
       navigate("/dashboard");
     }
-    // Lógica para usuarios normales - si NO es admin
+    // Lógica para usuarios normales - SOLO si NO es admin
     else if (
       formulario.nombre &&
       formulario.email &&

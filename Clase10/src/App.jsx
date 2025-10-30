@@ -18,25 +18,27 @@ function App() {
   return (
     <div>
       <AuthProvider>
-      <CartProvider>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Inicio />} />
-        <Route path="/servicios" element={<Servicios />} />
-        <Route path="/productos" element={<Productos />} />
-        <Route path="/productos/:id" element={<ProductoDetalle />} />
-        <Route path="/productos/:categoria/:id" element={<ProductoDetalle />} />
-        <Route path="/iniciar-sesion" element={<IniciarSesion />} />
-
-        <Route path="/pagar" element={<RutaProtegida><Pagar /></RutaProtegida>}/>
-        <Route path="/dashboard" element={<RutaProtegida soloAdmin={true}><Dashboard /></RutaProtegida>}/>
-
+        <CartProvider>
+          <Navbar />
+          <Routes>
+            
+            {/* RUTAS PÚBLICAS */}
+            <Route path="/" element={<Inicio />} />
+            <Route path="/servicios" element={<Servicios />} />
+            <Route path="/productos" element={<Productos />} />
+            <Route path="/productos/:id" element={<ProductoDetalle />} />
+            <Route path="/productos/:categoria/:id" element={<ProductoDetalle />} />
+            <Route path="/iniciar-sesion" element={<IniciarSesion />} />
+            
+            {/* RUTAS PROTEGIDA - Usuarios */}
+            <Route path="/pagar" element={<RutaProtegida><Pagar /></RutaProtegida>}/>
+           
             {/* RUTA PROTEGIDA - Admin */}
             <Route path="/agregar-producto" element={<RutaProtegida soloAdmin={true}><FormularioProducto /></RutaProtegida>}/>
-        
-      </Routes>
-      <Footer />
-      </CartProvider>
+            <Route path="/dashboard" element={<RutaProtegida soloAdmin={true}><Dashboard /></RutaProtegida>}/>
+          </Routes>
+          <Footer />
+        </CartProvider>
       </AuthProvider>
     </div>
   );
