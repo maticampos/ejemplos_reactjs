@@ -1,0 +1,99 @@
+/* ===== NAVBAR ===== */
+nav {
+  background-color:darkolivegreen;
+  padding: 1rem 2rem;
+  box-shadow: 0px 0px 2px 1px black;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+nav li {
+  display: inline-block;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+nav a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* ===== Productos  ===== */
+
+#lista-productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+#lista-productos li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+  background-color: lightgrey;
+  text-align: center;
+}
+
+main {
+  width: 70%;
+  padding-left: 15%;
+}
+
+/* Botones ADMIN en Componente Productos - Con Shadow Negro */
+.btn-editar, .btn-eliminar {
+  padding: 8px 16px;
+  margin: 5px;
+  border: 2px solid;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* BOTÓN EDITAR - Verde */
+.btn-editar {
+  background: #2E7D32;
+  color: white;
+  border-color: #2E7D32;
+}
+
+.btn-editar:hover {
+  background: #2E7D32;
+  color: white;
+  box-shadow: 5 0 6px rgba(0, 0, 0, 0.2); /* Shadow negro con blur */
+  transform: translateY(-1px);
+}
+
+/* BOTÓN ELIMINAR - Rojo */
+.btn-eliminar {
+  background: #C62828;
+  color: white;
+  border-color: #C62828;
+}
+
+.btn-eliminar:hover {
+  background: #C62828;
+  color: white;
+  box-shadow: 5 0 6px rgba(0, 0, 0, 0.2); /* Shadow negro con blur */
+  transform: translateY(-1px);
+}
