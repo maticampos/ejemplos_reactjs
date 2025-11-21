@@ -2,7 +2,7 @@
 
 ![Captura de la Tienda](capturaTienda.png)
 
-## Talento Tech 2025 ##
+## E-commerce con React + vite ##
 Con el objetivo es aprender colaborativamente a construir aplicaciones modernas, rápidas y modulares dstinamos el presente repositorio para compartir los códigos usados en clase.
 
 Durante el curso veremos los fundamentos de React: componentes, props, estado y manejo de eventos. 
