@@ -21,25 +21,26 @@ Abre el VSC y en el terminal escribe:
 ```bash
 git clone https://github.com/maticampos/ejemplos_reactjs.git
 ```
-Cada carpeta representa una clase, y se pueden ejecutar individualmente en el localhost, para eso escribe:
+Cada carpeta representa una clase y se pueden ejecutar individualmente en el localhost. Para eso adentro de la carpeta de clase, ejecuta:
 
 1: 
 ```bash
 npm install
 ```
-Con esto (re)instalaras el módulo node que por defecto es ignorado por github cuando subimos el proyecto.
+Para (re)instalar el módulo Node que es ignorado por github cuando subimos el proyecto.
 
 2:
 ```bash
 npm run dev
 ```
+Para iniciar el servidor local.
 
 3: 
 Escribe en una ventana de tu navegador: 
 ```
 localhost: 5173
 ```
-para ver el contenido de cada clase. 
+Para acceder al servidor local y ver el contenido de cada clase. 
 
 ___
 
