@@ -14,7 +14,7 @@ Este curso no requiere experiencia previa en frameworks, pero sí conocimientos 
 Prepárate para dar tus primeros pasos en el ecosistema React y a crear interfaces interactivas desde cero.
 
 ### Ejecución
-Instala Git
+Instala Git.
 
 Para hacer una copia local del repositorio en tu equipo. 
 Abre el VSC y en el terminal escribe: 
