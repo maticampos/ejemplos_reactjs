@@ -42,7 +42,7 @@ const ProductoDetalle = () => {
                 </div>
 
 
-                {/* Columna para la información - DERECHA (md-6) */}
+                {/* Columna para la información - DERECHA (md-6) */}  
                 <div className="col-md-6">
                     <div className="card border-0">
                         <div className="card-body p-1">

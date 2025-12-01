@@ -157,7 +157,7 @@ return (
         )}
 
 
-        {/* Información de la página actual */}
+        {/* Información de la página actual */}  
         {productosFiltrados.length > 0 && (
           <div className="text-center text-muted mt-2">
             <small>
