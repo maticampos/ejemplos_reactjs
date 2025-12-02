@@ -16,7 +16,7 @@ export default function IniciarSesion() {
     if (formulario.nombre === "admin" && formulario.email === "1234@admin") {
       // Guarda el email ingresado y pasa nombre para el token admin
       localStorage.setItem("authEmail", formulario.email);
-      iniciarSesion("admin", formulario.email);
+      iniciarSesion("admin", formulario.email );
       navigate("/dashboard");
     }
     // Lógica para usuarios normales - SOLO si NO es admin
@@ -27,7 +27,7 @@ export default function IniciarSesion() {
     ) {
   // Guarda el email ingresado y pasa nombre para el token user
   localStorage.setItem("authEmail", formulario.email);
-  iniciarSesion(formulario.nombre, formulario.email);
+  iniciarSesion(formulario.nombre, formulario.email) ;
 
       // Si venía del carrito, redirige a pagar
       if (ubicacion.state?.carrito) {
@@ -43,10 +43,11 @@ export default function IniciarSesion() {
   };
 
   return (
-    <div>
+    <div className="container mt-5 mb-5">
       <h1>Inicia sesión para continuar</h1>
       <form onSubmit={manejarEnvio}>
-        <input
+        <input 
+        className="me-2"
           type="text"
           placeholder="Nombre completo"
           value={formulario.nombre}
@@ -56,6 +57,7 @@ export default function IniciarSesion() {
           required
         />
         <input
+        className="me-2"
           type="email"
           placeholder="Email"
           value={formulario.email}
@@ -64,6 +66,7 @@ export default function IniciarSesion() {
           }
           required
         />
+        <hr/>
         <button type="submit">Iniciar Sesión</button>
         <strong> </strong>
         <button type="button" onClick={() => navigate("/productos")}>
@@ -71,12 +74,9 @@ export default function IniciarSesion() {
         </button>
       </form>
       <p style={{ marginTop: "20px", fontSize: "12px", color: "#666" }}>
-        <strong>Credenciales de prueba para Dashboard:</strong>
-        <br />
-        Nombre: admin
-        <br />
-        Email: 1234@admin
-      </p>
+        <strong>¿No recuerdas tus credenciales de admin?</strong>
+        </p>
+
     </div>
   );
 }

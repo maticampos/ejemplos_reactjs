@@ -19,11 +19,13 @@ export function CartProvider({ children }) {
   }, []);       
 
   // cada vez que carrito cambie, guardarlo en localStorage
-  useEffect(() => {
-    if (cargaCompleta) { // Solo guarda en localStorage si la carga inicial ha terminado
-      localStorage.setItem("carrito", JSON.stringify(carrito));
-    }
-  }, [carrito, cargaCompleta]);
+useEffect(() => {
+  if (cargaCompleta && carrito.length > 0) { // ← SOLO guardar si hay items
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+  } else if (cargaCompleta && carrito.length === 0) {
+    localStorage.removeItem("carrito"); // // y elimina cariito[] si está vacío
+  }
+}, [carrito, cargaCompleta]);
 
   // Funciones para el carrito
 const agregarAlCarrito = (producto) => {

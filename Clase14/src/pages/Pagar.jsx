@@ -19,6 +19,12 @@ export default function Pagar() {
     navigate("/productos");
   };
 
+    const manejarCerrarSesion = () => {
+    vaciarCarrito(); // ← Primero vaciar el carrito en el estado
+    cerrarSesion(); // ← Luego cerrar sesión
+    navigate("/productos"); // ← Redirigir
+  };
+
 
   return (
     <>
@@ -38,7 +44,7 @@ export default function Pagar() {
         }}>
           <strong>Token:</strong> {tokenActual}
         </div>
-        <button onClick={cerrarSesion}>Cerrar sesión</button>
+        <button onClick={manejarCerrarSesion}>Cerrar sesión</button>
         <hr />
       </div>
 
