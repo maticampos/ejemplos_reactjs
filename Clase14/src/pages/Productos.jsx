@@ -3,7 +3,7 @@ import CarritoCompras from "./Carrito";
 import { useCartContext } from "../context/CartContext";
 import { useAuthContext } from "../context/AuthContext";
 import { useProducts } from "../context/ProductsContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Productos() {
   const { productos, cargando, error } = useProducts();
@@ -12,9 +12,39 @@ export default function Productos() {
   const navigate = useNavigate();
 
   const [busqueda, setBusqueda] = useState("");
-  const [paginaActual, setPaginaActual] = useState(1); //Variable de estado para la paginación
+  const [paginaActual, setPaginaActual] = useState(1);
 
-   const productosPorPagina = 6; // Cantidad de productos a mostrar por página
+    useEffect(() => {
+    document.title = "Tienda de Juegos de Mesa | Productos";
+   
+    // Función para actualizar meta tags
+    const updateMetaTag = (name, content, attribute = 'name') => {
+      let meta = document.querySelector(`meta[${attribute}="${name}"]`);
+
+      if (!meta) {
+        meta = document.createElement('meta');
+        meta.setAttribute(attribute, name);
+        document.head.appendChild(meta);
+      }
+      meta.content = content;
+    };
+
+    // Meta tags básicos
+    updateMetaTag('description', 'Explora el catálogo de juegos de mesa. Encuentra juegos históricos, clásicos, modernos y educativos.');
+    updateMetaTag('keywords', 'juegos de mesa, juegos históricos, juegos clásicos, juegos modernos, juegos educativos');
+    updateMetaTag('author', '@webmaster');
+    updateMetaTag('robots', 'index, follow');
+
+    // Open Graph
+    updateMetaTag('og:title', 'Tienda de Juegos de Mesa', 'property');
+    updateMetaTag('og:description', 'Explora el catálogo de juegos de mesa.', 'property');
+    updateMetaTag('og:type', 'website', 'property');
+    updateMetaTag('og:image', 'https://tudominio.com/logo.jpg', 'property');
+    updateMetaTag('og:url', window.location.href, 'property');
+  }, []);
+
+  const productosPorPagina = 6;
+
 
   const manejarEliminar = (producto) => {
     // Navegar a la página de confirmación de eliminación
@@ -26,12 +56,14 @@ export default function Productos() {
     navigate('/formulario-producto', { state: { producto } });
   };
 
-  const productosFiltrados = productos.filter((producto) =>
-    producto.nombre.toLowerCase().includes(busqueda.toLowerCase()) || (producto.categoria && producto.categoria.toLowerCase().includes(busqueda.toLowerCase())
-)
+    const productosFiltrados = productos.filter(
+    (producto) =>
+      producto.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
+      (producto.categoria &&
+        producto.categoria.toLowerCase().includes(busqueda.toLowerCase()))
   );
 
-    const indiceUltimoProducto = paginaActual * productosPorPagina;
+  const indiceUltimoProducto = paginaActual * productosPorPagina;
   const indicePrimerProducto = indiceUltimoProducto - productosPorPagina;
   const productosActuales = productosFiltrados.slice(indicePrimerProducto, indiceUltimoProducto);
  
@@ -51,7 +83,7 @@ export default function Productos() {
   if (cargando) return <p>Cargando productos...</p>;
   if (error) return <p>{error}</p>;
 
-return (
+  return (
     <>
       <div className="container mt-4">
         {/* Barra de búsqueda */}
@@ -120,13 +152,13 @@ return (
                         <div className="d-flex gap-2">
                           <button
                             onClick={() => manejarEditar(producto)}
-                            className="btn btn-light btn-sm flex-fill"
+                            className="btn btn-warning btn-sm flex-fill"
                           >
                             Editar
                           </button>
                           <button
                             onClick={() => manejarEliminar(producto)}
-                            className="btn btn-light btn-sm flex-fill"
+                            className="btn btn-danger btn-sm flex-fill"
                           >
                             Eliminar
                           </button>
@@ -157,7 +189,7 @@ return (
         )}
 
 
-        {/* Información de la página actual */}  
+        {/* Información de la página actual */}
         {productosFiltrados.length > 0 && (
           <div className="text-center text-muted mt-2">
             <small>
@@ -170,3 +202,4 @@ return (
     </>
   );
 }
+
