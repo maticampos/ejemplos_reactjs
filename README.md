@@ -42,6 +42,18 @@ localhost: 5173
 ```
 Para acceder al servidor local y ver el contenido de cada clase. 
 
+## Deploy
+
+**Vercel**
+- repo	    | https://github.com/maticampos/vercel312
+- Deploy    | https://vercel312.vercel.app/
+
+**Netlify**
+- repo 		  | https://github.com/maticampos/netlify312 
+- Deploy 	  | https://tiendajuegosnetlify.netlify.app/
+
+
+
 ___
 
 Este esquema que presenta los códigos por clase permite comparar los archivos para ver sus modificaciones, progresiones y/o simplificaciones.
